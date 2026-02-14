@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Для тебя ❤️</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:white;
+  background:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65)),
+    url("https://images.openai.com/static-rsc-3/eOMVXF13574z__TZLntve-T7gRniOxTDguV2w0b8TdiPlLPTjENxmrNIvtr2NHVM1NcSVA5oycAPobdYt7NkSfucJxaJvi5SM1dkNhRtPQw?purpose=fullsize&v=1")
+    center/cover no-repeat fixed;
+}
+
+.card{
+  width:min(650px,90%);
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+  border-radius:24px;
+  padding:32px 24px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+
+h1{font-size:30px;margin-bottom:20px;}
+p{font-size:18px;line-height:1.7;white-space:pre-line;min-height:120px;}
+
+button{
+  margin-top:25px;
+  padding:14px 22px;
+  border:none;
+  border-radius:16px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  background:white;
+  color:black;
+  transition:.2s;
+}
+button:hover{opacity:.9}
+
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Экран 1 -->
+  <div id="screen1">
+    <h1>У меня для тебя кое-что ❤️</h1>
+    <button onclick="openInvite()">Открыть</button>
+  </div>
+
+  <!-- Экран 2 -->
+  <div id="screen2" class="hidden">
+    <h1>Приглашение</h1>
+    <p id="typing"></p>
+
+    <p>
+      📍 Vista<br>
+      🕰 19:00<br>
+      🚗 Я заеду за тобой в 18:00
+    </p>
+
+    <button onclick="yesClick()">Я буду ❤️</button>
+  </div>
+
+</div>
+
+<script>
+const text = `Я хочу пригласить тебя на вечер, который для меня многое значит.
+
+Это не просто свидание.
+Это шаг.`;
+
+function openInvite(){
+  document.getElementById("screen1").classList.add("hidden");
+  document.getElementById("screen2").classList.remove("hidden");
+  typeText();
+}
+
+function typeText(){
+  let i = 0;
